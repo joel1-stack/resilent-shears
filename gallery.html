@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Resilient Shears</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+</head>
+<body>
+    <!-- Live Background -->
+    <div class="live-bg"></div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">Resilient Shears</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Gallery</h1>
+            <p>See our work and salon environment</p>
+        </div>
+    </section>
+
+    <!-- Gallery Filters -->
+    <section class="gallery-filters">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="hair">Hair</button>
+                <button class="filter-btn" data-filter="nails">Nails</button>
+                <button class="filter-btn" data-filter="facials">Facials</button>
+                <button class="filter-btn" data-filter="salon">Salon</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-grid">
+        <div class="container">
+            <div class="grid">
+                <!-- Hair Services -->
+                <a href="images/gallery-1.jpg" data-lightbox="gallery" data-title="Hair Styling" class="gallery-item hair">
+                    <img src="images/gallery-1.jpg" alt="Hair Styling">
+                    <div class="overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <p>Hair Styling</p>
+                    </div>
+                </a>
+                
+                <!-- Nail Services -->
+                <a href="images/gallery-2.jpg" data-lightbox="gallery" data-title="Nail Art" class="gallery-item nails">
+                    <img src="images/gallery-2.jpg" alt="Nail Art">
+                    <div class="overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <p>Nail Art</p>
+                    </div>
+                </a>
+                
+                <!-- Add more gallery items -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed (Optional) -->
+    <section class="instagram-feed">
+        <div class="container">
+            <h2>Follow Us on Instagram</h2>
+            <div class="instagram-grid">
+                <!-- Instagram images will be loaded via JavaScript -->
+            </div>
+            <a href="https://www.instagram.com/yourprofile" class="btn" target="_blank">@ResilientShears</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <!-- Same as index.html -->
+    </footer>
+
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="js/script.js"></script>
+    <!-- Gallery Filter JS -->
+    <script>
+        // Filter gallery items
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    const galleryItems = document.querySelectorAll('.gallery-item');
+                    
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
